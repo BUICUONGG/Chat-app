@@ -8,6 +8,8 @@ import SignUpPage from "./pages/SignUpPage";
 import { useAuthStore } from "./store/useAuthStore";
 import { useEffect } from "react";
 import { Loader } from "lucide-react";
+import React from "react";
+import { Toaster } from "react-hot-toast";
 // import { axiosInstannce } from "./lib/axios";
 function App() {
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
@@ -41,12 +43,13 @@ function App() {
           path="/login"
           element={!authUser ? <LoginPage /> : <Navigate to="/" />}
         />
-        <Route path="/setting" element={<SettingPage />} />
+        <Route path="/settings" element={<SettingPage />} />
         <Route
           path="/profile"
           element={authUser ? <ProfilePage /> : <Navigate to="/login" />}
         />
       </Routes>
+      <Toaster />
     </div>
   );
 }
